@@ -1,0 +1,28 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.cover {
+    background-color: aquamarine;
+    width: 100vw;
+    height: 100vh;
+}
+
+.form-wrapper {
+    margin: 0 auto;
+    width: 300px;
+    border: 2px solid lightgrey;
+    background-color: aliceblue;
+    padding: 10px;
+}
+
+.form-wrapper form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-wrapper form * {
+    margin: 8px 0px;
+    padding: 3px 0px;
+}

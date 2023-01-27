@@ -2,7 +2,7 @@ import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import { signUp } from '../../api';
 
-const SignUp = () => {
+const SignUp = (props) => {
 
     const initialValues = {
         firstName: '',
@@ -13,8 +13,7 @@ const SignUp = () => {
     }
 
     const submitHandler = (values, actions) => {
-        signUp(values)
-            .then(data => console.log(data))
+        props.apiRequest(signUp(values));
     }
 
     return (
