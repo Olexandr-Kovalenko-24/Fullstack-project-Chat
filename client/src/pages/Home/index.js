@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import SignIn from '../../components/SignIn';
 import SignUp from '../../components/SignUp';
@@ -10,7 +10,7 @@ const Home = (props) => {
     const navigate = useNavigate();
 
     const sendApiRequest = (response) => {
-        response.then(({data: {data}}) => {
+        response.then(({ data }) => {
             console.log(data);
             props.sendData(data);
             navigate('/messenger');
@@ -19,13 +19,13 @@ const Home = (props) => {
 
     const buttonText = view ? "SignIUp" : "SignIn";
 
-    const clickHandler = () => {setView(!view)}
+    const clickHandler = () => { setView(!view) }
 
     return (
         <div>
+            <button onClick={clickHandler}>{buttonText}</button>
             <section className={styles['form-wrapper']}>
-                <button onClick={clickHandler}>{buttonText}</button>
-                {view ? <SignIn apiRequest={sendApiRequest}/> : <SignUp apiRequest={sendApiRequest} />}
+                {view ? <SignIn apiRequest={sendApiRequest} /> : <SignUp apiRequest={sendApiRequest} />}
             </section>
         </div>
     );
