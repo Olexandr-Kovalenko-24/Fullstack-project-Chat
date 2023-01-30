@@ -24,9 +24,9 @@ module.exports.addUserToChat = async (req, res, next) => {
 
 module.exports.addNewMessage = async (req, res, next) => {
     try {
-        const {body, params: {chatId}} = req;
+        const {body, params: {chatId}, payload: {userId}} = req;
         const chatInstance = await Chat.findById(chatId);
-        const newMessage = await Message.create({...body, chatId});
+        const newMessage = await Message.create({...body, chatId, author: userId});
         chatInstance.messages.push(newMessage);
         chatInstance.save();
         res.status(201).send({data: newMessage});
@@ -37,7 +37,7 @@ module.exports.addNewMessage = async (req, res, next) => {
 
 module.exports.getAllUserChats = async (req, res, next) => {
     try {
-        const {params: {userId}} = req;
+        const {payload: {userId}} = req;
         const allUserChats = await Chat.find({
             members: userId
         })
