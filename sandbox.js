@@ -29,16 +29,20 @@ function* incrementToHundred(){
 
 function* generateNumber(){
     let score = 0;
-    let sum = 0;
     while (score < 100) {
-        sum+=score;
-        console.log(sum);
         yield score++;
     }
 }
 
-const result = generateNumber();
-console.log(result.next());
-console.log(result.next());
-console.log(result.next());
-console.log(result.next());
+let result = generateNumber();
+// console.log(result.next());
+// console.log(result.next());
+// console.log(result.next());
+// console.log(result.next());
+
+let sum = 0;
+for (let value of result) {
+    sum+=value;
+    // console.log(value)
+}
+console.log(sum);
