@@ -4,6 +4,10 @@ const httpClient = axios.create({
     baseURL: 'http://localhost:5000/api'
 });
 
+export const logOut = async () => {
+    localStorage.clear();
+}
+
 httpClient.interceptors.request.use((config) => {
     const token = localStorage.getItem('token');
     if(token) {
@@ -21,7 +25,15 @@ httpClient.interceptors.response.use((response) => {
         localStorage.setItem('token', token);
     }
     return response;
-})
+}, (err) => {
+    if (err.response.status === 403) {
+        logOut();
+    }
+    return Promise.reject(err);
+});
+
+
+
 
 
 export const signIn = async (userData) => await httpClient.post('/users/sign-in', userData);
