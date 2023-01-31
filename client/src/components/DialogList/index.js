@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {useNavigate} from 'react-router-dom'
+import {useNavigate} from "react-router-dom";
 import styles from './DialogList.module.css';
 import {getAllUserChats} from '../../api/index'
 
@@ -14,6 +14,7 @@ const DialogList = () => {
             setList(data);
         })
         .catch((err) => {
+            console.log(err)
             navigate('/');
         })
     }, []);

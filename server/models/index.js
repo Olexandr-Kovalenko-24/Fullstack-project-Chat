@@ -4,6 +4,7 @@ const CONFIG = require('../config/db.json')[db];
 const User = require('./User');
 const Message = require('./Message');
 const Chat = require('./Chat');
+const RefreshToken = require('./RefreshToken');
 
 mongoose.connect(`mongodb://${CONFIG.host}:${CONFIG.port}/${CONFIG.database}`)
 .catch(error => {
@@ -12,5 +13,5 @@ mongoose.connect(`mongodb://${CONFIG.host}:${CONFIG.port}/${CONFIG.database}`)
 });
 
 module.exports = {
-    User, Message, Chat
+    User, Message, Chat, RefreshToken
 };
