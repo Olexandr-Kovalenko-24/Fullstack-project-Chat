@@ -31,8 +31,8 @@ const mapDispatchToProps = {
     changeStep: stepActionCreater
 }
 
-const HOC = connect(mapStateToProps, mapDispatchToProps)
-const ComponentWithStore = HOC(Component);
+// const HOC = connect(mapStateToProps, mapDispatchToProps)
+// const ComponentWithStore = HOC(Component);
 
 
-export default ComponentWithStore;
+export default connect(mapStateToProps, mapDispatchToProps)(Component);
