@@ -24,6 +24,7 @@ httpClient.interceptors.request.use((config) => {
     if(token) {
         config.headers = {
             ...config.headers,
+            // "Content-Type": 'application/json',
             Authorization: `Bearer ${token}`
         }
     }
@@ -62,7 +63,7 @@ httpClient.interceptors.response.use((response) => {
 
 export const createChat = async (data) => await httpClient.post('/chats/', data);
 
-export const addNewMessage = async (chatId, data) => await httpClient.post(`/chats/${chatId}`, data);
+export const addNewMessage = async ({chatId, body}) => await httpClient.post(`/chats/${chatId}`, {body});
 
 export const getChatWithMessages = async (chatId) => await httpClient.get(`/chats/${chatId}`);
 

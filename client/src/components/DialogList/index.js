@@ -8,16 +8,16 @@ const DialogList = () => {
     const [list, setList] = useState(null);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        getAllUserChats()
-        .then(({data: {data}}) => {
-            setList(data);
-        })
-        .catch((err) => {
-            console.log(err)
-            navigate('/');
-        })
-    }, []);
+    // useEffect(() => {
+    //     getAllUserChats()
+    //     .then(({data: {data}}) => {
+    //         setList(data);
+    //     })
+    //     .catch((err) => {
+    //         console.log(err)
+    //         navigate('/');
+    //     })
+    // }, []);
 
     const mapList = (chat) => <li key={chat._id}>{chat.name}</li>
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {incrementActionCreater, decrementActionCreater, stepActionCreater} from '../src/actions/actions'
+import {incrementActionCreater, decrementActionCreater, stepActionCreater} from './actions/actionCreators'
 
 const Component = (props) => {
 
