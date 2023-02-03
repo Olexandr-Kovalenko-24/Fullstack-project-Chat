@@ -1,6 +1,7 @@
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
-import { signUp } from '../../api';
+import { connect } from 'react-redux';
+import {registerUserAction} from '../../actions/actionCreators';
 
 const SignUp = (props) => {
 
@@ -13,7 +14,7 @@ const SignUp = (props) => {
     }
 
     const submitHandler = (values, actions) => {
-        props.apiRequest(signUp(values));
+        props.sendRequest(values);
     }
 
     return (
@@ -21,13 +22,14 @@ const SignUp = (props) => {
             initialValues={initialValues}
             onSubmit={submitHandler}
         >
-            {(props) => (
+            {(formikProps) => (
                 <Form>
                     <Field name='firstName' placeholder='firstName' />
                     <Field name='lastName' placeholder='lastName' />
                     <Field name='birthday' type="date" placeholder='birthday' />
                     <Field name="email" placeholder="Type your email" />
                     <Field name="password" placeholder="Type your password" />
+                    {props.error && <div>{props.error}</div>}
                     <button type="submit">Send!</button>
                 </Form>
             )}
@@ -35,4 +37,10 @@ const SignUp = (props) => {
     );
 }
 
-export default SignUp;
+const mapStateToProps = ({error}) => ({error})
+
+const mapDispatchToProps = {
+    sendRequest: registerUserAction
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
