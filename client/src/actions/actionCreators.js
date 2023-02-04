@@ -60,3 +60,25 @@ export const getUserChatsError = (error) => ({
     type: ACTION_TYPES.GET_USER_CHATS_ERROR,
     error
 })
+
+
+export const getChatWithMessagesAction = (payload) => ({
+    type: ACTION_TYPES.GET_CHAT_WITH_MESSAGES_REQUEST,
+    payload
+})
+
+export const getChatWithMessagesSuccess = (data) => ({
+    type: ACTION_TYPES.GET_CHAT_WITH_MESSAGES_SUCCESS,
+    data
+})
+
+export const getChatWithMessagesError = (error) => ({
+    type: ACTION_TYPES.GET_CHAT_WITH_MESSAGES_ERROR,
+    error
+})
+
+
+export const setCurrentChatAction = (data) => ({
+    type: ACTION_TYPES.SET_CURRENT_CHAT_ACTION,
+    data
+})

@@ -1,20 +1,31 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styles from './Chat.module.css';
 import { connect } from 'react-redux';
+import {getChatWithMessagesAction} from '../../actions/actionCreators';
 
 const Chat = (props) => {
 
-    const {currentChat} = props;
+    const {currentChat, messages} = props;
+
+    useEffect(() => {
+        if(currentChat){
+            props.getChatWithMessages(currentChat);
+        }
+    }, [currentChat]);
 
     return (
         <div className={styles.chat}>
             <ul>
-                {currentChat && currentChat.messages.map(msg => <li>{msg.body}</li>)}
+                {currentChat && messages && messages.map(msg => <li key={msg._id}>{msg.body}</li>)}
             </ul>
         </div>
     );
 }
 
-const mapStateToProps = ({ currentChat }) => ({ currentChat });
+const mapStateToProps = ({ currentChat, messages }) => ({ currentChat, messages });
 
-export default connect(mapStateToProps)(Chat);
+const mapDispatchToProps = {
+    getChatWithMessages: getChatWithMessagesAction
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Chat);

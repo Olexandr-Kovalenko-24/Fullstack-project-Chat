@@ -4,6 +4,7 @@ const initialState = {
     user: null,
     chatList: [],
     currentChat: null,
+    messages: [],
     error: null,
     isFetching: false
   }
@@ -32,6 +33,21 @@ const initialState = {
           chatList: data
         }
       }
+      case ACTION_TYPES.GET_CHAT_WITH_MESSAGES_SUCCESS: {
+        const {data} = action;
+        return {
+          ...state,
+          messages: data.messages
+        }
+      }
+      case ACTION_TYPES.SET_CURRENT_CHAT_ACTION: {
+        const {data} = action;
+        return {
+          ...state,
+          currentChat: data
+        }
+      }
+      case ACTION_TYPES.GET_CHAT_WITH_MESSAGES_ERROR:
       case ACTION_TYPES.GET_USER_CHATS_ERROR:
       case ACTION_TYPES.REGISTER_USER_ERROR:
       case ACTION_TYPES.LOGIN_USER_ERROR:
@@ -42,6 +58,7 @@ const initialState = {
           error: error.message
         }
       }
+      case ACTION_TYPES.GET_CHAT_WITH_MESSAGES_REQUEST:
       case ACTION_TYPES.GET_USER_CHATS_REQUEST:
       case ACTION_TYPES.REGISTER_USER_REQUEST:
       case ACTION_TYPES.LOGIN_USER_REQUEST:

@@ -4,11 +4,13 @@ import {sendNewMessageAction} from '../../actions/actionCreators';
 import {connect} from 'react-redux';
 
 const MessageArea = (props) => {
+    console.log(props)
     const [message, setMessage] = useState('');
 
     const onSubmitHandler = event => {
         event.preventDefault();
         props.sendMessage({body: message, chatId: props.currentChat});
+        setMessage('');
     }
 
     const changeHandler = ({target: {value}}) => {

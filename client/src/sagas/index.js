@@ -1,6 +1,6 @@
 import {takeLatest} from 'redux-saga/effects';
 import ACTION_TYPES from "../actions/actionTypes";
-import {createMessageSaga} from './chatSaga';
+import {createMessageSaga, getChatWithMessagesSaga} from './chatSaga';
 import {loginUserSaga, registerUserSaga, getUserChatsSaga} from './userSaga';
 
 function* rootSaga () {
@@ -9,6 +9,7 @@ function* rootSaga () {
 
     yield takeLatest(ACTION_TYPES.SEND_NEW_MESSAGE_REQUEST, createMessageSaga);
     yield takeLatest(ACTION_TYPES.GET_USER_CHATS_REQUEST, getUserChatsSaga);
+    yield takeLatest(ACTION_TYPES.GET_CHAT_WITH_MESSAGES_REQUEST, getChatWithMessagesSaga);
 }
 
 export default rootSaga;

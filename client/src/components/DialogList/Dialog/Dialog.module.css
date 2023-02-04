@@ -1,0 +1,11 @@
+.dialog{
+    width: 100%;
+    padding: 5px;
+    cursor: pointer;
+    box-sizing: border-box;
+    background-color: lavender;
+}
+
+.dialog-current {
+    background-color: aquamarine;
+}
