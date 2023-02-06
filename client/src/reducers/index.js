@@ -33,6 +33,13 @@ const initialState = {
           chatList: data
         }
       }
+      case ACTION_TYPES.GET_USER_SUCCESS: {
+        const {data} = action;
+        return {
+          ...state,
+          user: data
+        }
+      }
       case ACTION_TYPES.GET_CHAT_WITH_MESSAGES_SUCCESS: {
         const {data} = action;
         return {
@@ -47,6 +54,7 @@ const initialState = {
           currentChat: data
         }
       }
+      case ACTION_TYPES.GET_USER_ERROR:
       case ACTION_TYPES.GET_CHAT_WITH_MESSAGES_ERROR:
       case ACTION_TYPES.GET_USER_CHATS_ERROR:
       case ACTION_TYPES.REGISTER_USER_ERROR:
@@ -58,6 +66,7 @@ const initialState = {
           error: error.message
         }
       }
+      case ACTION_TYPES.GET_USER_REQUEST:
       case ACTION_TYPES.GET_CHAT_WITH_MESSAGES_REQUEST:
       case ACTION_TYPES.GET_USER_CHATS_REQUEST:
       case ACTION_TYPES.REGISTER_USER_REQUEST:

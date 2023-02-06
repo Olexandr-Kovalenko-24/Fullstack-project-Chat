@@ -82,3 +82,17 @@ export const setCurrentChatAction = (data) => ({
     type: ACTION_TYPES.SET_CURRENT_CHAT_ACTION,
     data
 })
+
+export const getUserAction = () => ({
+    type: ACTION_TYPES.GET_USER_REQUEST
+})
+
+export const getUserSuccess = (data) => ({
+    type: ACTION_TYPES.GET_USER_SUCCESS,
+    data
+})
+
+export const getUserError = (error) => ({
+    type: ACTION_TYPES.GET_USER_ERROR,
+    error
+})

@@ -46,9 +46,9 @@ module.exports.signInUser = async (req, res, next) => {
 
 module.exports.getOne = async (req, res, next) => {
     try {
-        const { params: { userId } } = req;
+        const {payload: {userId}} = req;
         const user = await User.findById(userId);
-        res.status(200).send(user);
+        res.status(200).send({ data: user });
     } catch (error) {
         next(error);
     }

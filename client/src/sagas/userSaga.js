@@ -1,7 +1,7 @@
 import {put} from 'redux-saga/effects';
-import {signIn, signUp, getAllUserChats} from '../api';
+import {signIn, signUp, getAllUserChats, getUser} from '../api';
 import history from '../browserHistory';
-import {loginUserSuccess, loginUserError, registerUserSuccess, registerUserError, getUserChatsSuccess, getUserChatsError} from '../actions/actionCreators';
+import {loginUserSuccess, loginUserError, registerUserSuccess, registerUserError, getUserChatsSuccess, getUserChatsError, getUserSuccess, getUserError} from '../actions/actionCreators';
 
 export function* loginUserSaga(action){
     try {
@@ -30,5 +30,14 @@ export function* getUserChatsSaga(){
         yield put(getUserChatsSuccess(data));
     } catch (error) {
         yield put(getUserChatsError(error));
+    }
+}
+
+export function* getUserSaga(){
+    try {
+        const {data: {data}} = yield getUser();
+        yield put(getUserSuccess(data));
+    } catch (error) {
+        yield put(getUserError(error));
     }
 }
