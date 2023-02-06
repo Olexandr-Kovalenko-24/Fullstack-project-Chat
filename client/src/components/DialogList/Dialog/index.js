@@ -7,7 +7,9 @@ import cx from 'classnames';
 const Dialog = (props) => {
 
     const clickHandler = () => {
-        props.setCurrentChat(props.id);
+        if(props.currentChat !== props.id){
+            props.setCurrentChat(props.id);
+        }
     }
 
     const cn = cx(styles.dialog, {
