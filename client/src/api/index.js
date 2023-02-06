@@ -13,6 +13,8 @@ export const logOut = async () => {
     localStorage.clear();
 }
 
+export const getUser = async () => await httpClient.get(`/users/`);
+
 export const refreshSession = async () => { 
     const refreshToken = localStorage.getItem('refreshToken');
     const {data} = await httpClient.post('/users/refresh', {refreshToken});
@@ -70,5 +72,3 @@ export const getChatWithMessages = async (chatId) => await httpClient.get(`/chat
 export const getAllUserChats = async () => await httpClient.get(`/chats/user/all`);
 
 export const addUserToChat = async (chatId, userId) => await httpClient.put(`/chats/${chatId}`, {userId});
-
-export const getUser = async () => await httpClient.get(`/users/`);

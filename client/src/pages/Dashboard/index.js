@@ -5,13 +5,18 @@ import MessageArea from '../../components/MessageArea';
 import styles from './DashBoard.module.css';
 import { connect } from 'react-redux';
 import {getUserAction} from '../../actions/actionCreators';
+import history from '../../browserHistory';
 
 
 const DashBoard = (props) => {
 
     useEffect(() => {
         if(!props.user){
-            props.getUser();
+            if(localStorage.getItem('refreshToken')){
+                props.getUser();
+            } else {
+                history.push('/')
+            }
         }
     }, [props.user]);
 
