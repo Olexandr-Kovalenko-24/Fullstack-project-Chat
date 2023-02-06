@@ -6,7 +6,8 @@ const initialState = {
     currentChat: null,
     messages: [],
     error: null,
-    isFetching: false
+    isFetching: false,
+    notification: null
   }
   
   function reducer (state = initialState, action) {
@@ -69,6 +70,13 @@ const initialState = {
         return {
           ...state,
           isFetching: true
+        }
+      }
+      case ACTION_TYPES.NOTIFICATION: {
+        const {data} = action
+        return {
+          ...state,
+          notification: data
         }
       }
       default: {
